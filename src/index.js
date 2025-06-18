@@ -6,6 +6,7 @@ const { sequelize } = require('./models');
 
 const sensorRoutes = require('./routes/sensorRoutes');
 const controlRoutes = require('./routes/controlRoutes');
+const espRoutes = require("./routes/ipespRoutes");
 
 const app = express();
 const PORT = process.env.PORT || 8000;
@@ -16,6 +17,8 @@ app.use(express.json());
 
 app.use('/api', sensorRoutes);
 app.use('/api', controlRoutes);
+app.use('/api', espRoutes);
+
 
 sequelize.sync()
   .then(() => {
